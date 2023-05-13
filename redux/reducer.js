@@ -5,17 +5,16 @@ const initialState = {
 }
 const todosReducer = (state = initialState, action) => {
   if (action.type === "ADD_TODO") {
-    return [
-        ...state,
-      {
-        title: action.payload,
-        done: false,
-      }
-      ];
+    return {
+      ...state,
+      todos: [...state.todos, action.payload],
+    };
+
   } else if (action.type === "TODO_TOGGLED") {
     return state.map((todo) =>
     todo.title === action.payload ? {...todo, done: !todo.done} : todo
     );
+
   } else if (action.type === "REMOVE_TODO") {
     return state.filter((todo) => todo.title !== action.payload);
   }
@@ -29,7 +28,8 @@ const todosReducer = (state = initialState, action) => {
 
 export default combineReducers({
   todos :todosReducer,
-  list,
+  // list,
 });
 
+// export default todosReducer;
 
