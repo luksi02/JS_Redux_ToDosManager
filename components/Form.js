@@ -1,36 +1,32 @@
-import React from "react"
-import {useState} from "react";
-// import Form from "../containers/Form"
-import {combineReducers} from "../redux/reducer";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addTodo } from "../redux/actions";
 
 const Form = ({ addTodo }) => {
-    const [todoName, setTodoName] = useState("");
+  const [todoName, setTodoName] = useState("");
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addTodo(todoName);
     setTodoName("");
-    }
+  };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                id="todoName"
-                name="todoName"
-                value={todoName}
-                onChange={(e) => setTodoName(e.target.value)}
-            />
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        id="todoName"
+        name="todoName"
+        value={todoName}
+        onChange={(e) => setTodoName(e.target.value)}
+      />
+      <button type="submit">Dodaj</button>
+    </form>
+  );
+};
 
-            <button type="submit">Dodaj</button>
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (todoName) => dispatch(addTodo(todoName)),
+});
 
-
-        </form>
-    );
-}
-
-// Form.propTypes = {
-//   addToDo: PropTypes.func
-// }
-//
-export default Form;
+export default connect(null, mapDispatchToProps)(Form);
