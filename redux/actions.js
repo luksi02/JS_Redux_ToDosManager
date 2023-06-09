@@ -30,9 +30,10 @@ export const removeTodo = (title) => ({
     payload: title,
 })
 
-export const removeTodo2s= (dispatch, title) => {
+export const removeTodo2s = (title, dispatch) => {
     const id = setInterval(() =>{
-        dispatch(removeTodo());
+        dispatch(removeTodo(title));
     }, 2000);
 
 }
+
