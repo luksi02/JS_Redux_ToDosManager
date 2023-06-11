@@ -3,15 +3,6 @@ export const TOGGLE_TODO = "TOGGLE_TODO"
 export const REMOVE_TODO = "REMOVE_TODO"
 export const REMOVE_TODO_2S = "REMOVE_TODO_2S"
 
-// export const REMOVE_TODO_2S = "REMOVE_TODO_2S"
-
-// export const addTodo = (todoName) => {
-//     return {
-//         type: ADD_TODO,
-//         payload: todoName,
-//     };
-// };
-
 export const addTodo = (todoName) => {
     return {
         type: ADD_TODO,
@@ -31,9 +22,7 @@ export const removeTodo = (title) => ({
 })
 
 export const removeTodo2s = (title, dispatch) => {
-    const id = setInterval(() =>{
+    const id = setTimeout(() => {
         dispatch(removeTodo(title));
     }, 2000);
-
 }
-
