@@ -16,9 +16,9 @@ export const toggle = (title) => ({
     payload: title,
 })
 
-export const removeTodo = (title) => ({
+export const removeTodo = (index) => ({
     type: REMOVE_TODO,
-    payload: title,
+    index,
 })
 
 export const removeTodo2s = (title, dispatch) => {
